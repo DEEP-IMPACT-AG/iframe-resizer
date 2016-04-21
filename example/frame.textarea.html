@@ -26,6 +26,19 @@
 
 		<script>
 
+    var iFrameResizer = {
+	messageCallback: function(message){
+	    alert( message,parentIFrame.getId());
+
+            if ('parentIFrame' in window && (message.indexOf("setHeightCalculationMethod")>=0)){
+                var hcm=message.split(":")[1];
+
+
+                window.parentIFrame.setHeightCalculationMethod(hcm);
+                console.log("wow bodyScroll", hcm);
+            }
+	}
+    }
 
 			function store(){
 				this.x = this.offsetWidth;

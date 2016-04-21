@@ -54,8 +54,8 @@
 						'<b>Frame ID:</b> '    + messageData.iframe.id +
 						' <b>Message:</b> '    + messageData.message
 					);
-					alert(messageData.message);
-					document.getElementsByTagName('iframe')[0].iFrameResizer.sendMessage('Hello back from parent page');
+					alert("jolin"+messageData.message);
+					document.getElementsByTagName('iframe')[0].iFrameResizer.sendMessage('Hello JUAN back from parent page');
 				},
 				closedCallback         : function(id){ // Callback fn when iFrame is closed
 					$('p#callback').html(
@@ -64,6 +64,7 @@
 					);
 				}
 			});
+                        document.getElementsByTagName('iframe')[0].iFrameResizer.sendMessage('Hello JUAN back from parent page');
 
 		</script>
 	</body>

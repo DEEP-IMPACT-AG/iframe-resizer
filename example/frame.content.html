@@ -21,7 +21,7 @@
 		<a id="nested" href="frame.nested.html">Nested</a>
 		&nbsp;
 		<a href="frame.hover.html">:Hover</a>
-		&nbsp;
+		&nbspclose;
 		<a href="frame.textarea.html">TextArea</a>
 		&nbsp;
 		<a href="frame.absolute.html">Absolute Position</a>
@@ -46,13 +46,20 @@
 		</script>
 
 		<script>
-			var iFrameResizer = {
-					messageCallback: function(message){
-						alert(message,parentIFrame.getId());
-					}
-				}
+    var iFrameResizer = {
+	messageCallback: function(message){
+	    console.log("iFrameResizer:messageCallback", message,parentIFrame.getId());
+
+            if ('parentIFrame' in window && (message.indexOf("setHeightCalculationMethod")>=0)){
+                var hcm=message.split(":")[1];
+                window.parentIFrame.setHeightCalculationMethod(hcm);
+                console.log("iFrameResizer:messageCallback", "setHeightCalculationMethod:", hcm);
+            }
+	}
+    }
 		</script>
 
-		<script type="text/javascript" src="../js/iframeResizer.contentWindow.min.js" defer></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.3/iframeResizer.contentWindow.min.js" defer></script>
+
 	</body>
 </html>
